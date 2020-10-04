@@ -24,7 +24,7 @@ proxies:
 
 proxy-groups:
 - { name: "AutoSelect", type: url-test, proxies: ['nonogo', 'nonogo1' ], url: 'http://www.gstatic.com/generate_204', interval: 300 }
-- { name: "proxies", type: select, proxies: [ AutoSelect, 'T'nonogo', 'nonogo1' ] }
+- { name: "proxies", type: select, proxies: [ AutoSelect, 'nonogo', 'nonogo1' ] }
 
 rules:
  - GEOIP,CN,DIRECT
