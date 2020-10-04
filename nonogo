@@ -1,0 +1,31 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: '0.0.0.0:9090'
+secret: ''
+
+dns:
+  enable: true
+  nameserver:
+    - 94.140.14.14
+    - 94.140.15.15
+    - tls://dns.adguard.com:853
+  fallback:
+    - tls://1.0.0.1:853
+    - tls://dns.google:853
+    
+    
+proxies:
+- { name: "nonogo", type: trojan, server: nonogo.ddns.net, port: 443, password: 1qaz2wsx }
+- { name: "nonogo1", type: trojan, server: nonogo.ddns.net, port: 443, password: 1qaz2wsx }
+
+proxy-groups:
+- { name: "AutoSelect", type: url-test, proxies: ['nonogo', 'nonogo1' ], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+- { name: "proxies", type: select, proxies: [ AutoSelect, 'T'nonogo', 'nonogo1' ] }
+
+rules:
+ - GEOIP,CN,DIRECT
+ - MATCH,proxies
