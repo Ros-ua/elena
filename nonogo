@@ -21,10 +21,12 @@ dns:
 proxies:
 - { name: "nonogo", type: trojan, server: nonogo.ddns.net, port: 443, password: 1qaz2wsx }
 - { name: "wakasa", type: trojan, server: wakasa.ddns.net, port: 443, password: 1qaz2wsx }
+- { name: "wakasaws", type: vmess, server: wakasa.ddns.net, port: 444, uuid: 5748956c-0724-11eb-bfee-0022480d798b, alterId: 16, cipher: auto, tls: true, network: ws, ws-path: /hl8Ysyzm/, Host: wakasa.ddns.net }
+- { name: "wakasatcp", type: vmess, server: wakasa.ddns.net, port: 446, uuid: a6691464-0724-11eb-bfee-0022480d798b, alterId: 16, cipher: auto }
 
 proxy-groups:
-- { name: "AutoSelect", type: url-test, proxies: ['nonogo', 'wakasa' ], url: 'http://www.gstatic.com/generate_204', interval: 300 }
-- { name: "proxies", type: select, proxies: [ AutoSelect, 'nonogo', 'wakasa' ] }
+- { name: "AutoSelect", type: url-test, proxies: ['nonogo', 'wakasa',  'wakasaws',  'wakasatcp' ], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+- { name: "proxies", type: select, proxies: [ AutoSelect, 'nonogo', 'wakasa', 'wakasaws',  'wakasatcp' ] }
 
 rules:
  - GEOIP,CN,DIRECT
