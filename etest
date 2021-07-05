@@ -1,0 +1,44 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: info
+external-controller: '0.0.0.0:9090'
+secret: ''
+
+dns:
+  enable: true
+  listen: :53 
+  enhanced-mode: redir-host
+  nameserver:
+    - 76.76.19.19
+  fallback: 
+    - 76.223.122.150
+    - 8.8.8.8
+    - 8.8.4.4 
+
+    
+proxies:
+
+- { name: "v2ray_WS_SAMPLE", type: vmess, server: 530may.duckdns.org, port: 444, uuid: 4eb73413-c09c-11eb-981b-0a1c273ae920, alterId: 0, cipher: auto, tls: true, network: ws, ws-path: /E4stK3cv/, Host: 530may.duckdns.org }
+- { name: "trojan_SAMPLE", type: trojan, server: 506may.duckdns.org, port: 443, password: 1qaz2wsx }
+- { name: "tcpN", type: vmess, server: novcat.duckdns.org, port: 446, uuid: bd3d8a94-1d04-11eb-bae0-0a2fe9d406de, alterId: 0, cipher: auto }
+
+
+- { name: "trojannakhla", type: trojan, server: nakhla.duckdns.org, port: 443, password: 1qaz2wsx }
+- { name: "trojan3070", type: trojan, server: 3070j.ddns.net, port: 443, password: 1qaz2wsx }
+- { name: "trojan3071", type: trojan, server: 3071j.ddns.net, port: 443, password: 1qaz2wsx }
+
+- { name: "tcp1", type: vmess, server: 13.212.146.69, port: 444, uuid: 4895c2e4-d814-11eb-ae19-0a473629618e, alterId: 0, cipher: auto }
+- { name: "tcp2", type: vmess, server: 18.141.170.35, port: 444, uuid: ee9bd94a-d95d-11eb-b5ff-0a80a921b7c4, alterId: 0, cipher: auto }
+- { name: "tcp3", type: vmess, server: 13.212.93.187, port: 444, uuid: f5f0775a-d95d-11eb-b14e-0a08309daed6, alterId: 0, cipher: auto }
+
+
+proxy-groups:
+- { name: "AutoSelect", type: url-test, proxies: [  'tcp1', 'tcp2',  'tcp3', 'trojannakhla', 'trojan3070',  'trojan3071'  ], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+- { name: "proxies", type: select, proxies: [ AutoSelect,  'tcp1', 'tcp2',  'tcp3', 'trojannakhla', 'trojan3070',  'trojan3071' ] }
+
+rules:
+ - GEOIP,CN,DIRECT
+ - MATCH,proxies
