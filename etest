@@ -26,8 +26,8 @@ proxies:
 - { name: "tcpN", type: vmess, server: novcat.duckdns.org, port: 446, uuid: bd3d8a94-1d04-11eb-bae0-0a2fe9d406de, alterId: 0, cipher: auto }
 
 
-- { name: "trojan", type: trojan, server: etest.number999.design, port: 443, password: 1qaz2wsx }
-- { name: "tcp", type: vmess, server: etest.number999.design, port: 444, uuid: 4a30eabb-de0f-11eb-8741-0e9c4f51e8a9, alterId: 0, cipher: auto }
+- { name: "trojan", type: trojan, server: 807.number999.design, port: 443, password: 1qaz2wsx }
+- { name: "tcp", type: vmess, server: 807.number999.design, port: 444, uuid: e52c998f-df9e-11eb-b49e-0a15dd34a142, alterId: 0, cipher: auto }
 
 
 proxy-groups:
