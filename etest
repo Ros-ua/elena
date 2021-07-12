@@ -11,18 +11,18 @@ secret: ''
 proxies:
 
 - { name: "trojannakhla", type: trojan, server: nakhla.duckdns.org, port: 443, password: 1qaz2wsx }
-- { name: "trojan3070", type: trojan, server: 3070j.ddns.net, port: 443, password: 1qaz2wsx }
-- { name: "trojan3071", type: trojan, server: 3071j.ddns.net, port: 443, password: 1qaz2wsx }
-
-- { name: "tcp1", type: vmess, server: 13.212.146.69, port: 444, uuid: 4895c2e4-d814-11eb-ae19-0a473629618e, alterId: 0, cipher: auto }
-- { name: "tcp2", type: vmess, server: 18.141.170.35, port: 444, uuid: ee9bd94a-d95d-11eb-b5ff-0a80a921b7c4, alterId: 0, cipher: auto }
 - { name: "tcp3", type: vmess, server: 13.212.93.187, port: 444, uuid: f5f0775a-d95d-11eb-b14e-0a08309daed6, alterId: 0, cipher: auto }
+
+- { name: "t1", type: trojan, server: 1208.number999.design, port: 443, password: 1qaz2wsx }
+- { name: "t2", type: trojan, server: 1208.number999.design, port: 443, password: js6l5rctr }
+- { name: "tcp1", type: vmess, server: 1208.number999.design, port: 444, uuid: a47dae63-e2ca-11eb-aa7a-0a7cdca84a48, alterId: 0, cipher: auto }
+- { name: "tcp2", type: vmess, server: 13.212.120.148, port: 444, uuid: a47dae63-e2ca-11eb-aa7a-0a7cdca84a48, alterId: 0, cipher: auto }
+- { name: "tcp3", type: vmess, server: 2406:da18:84f:8202:fdd4:a6f9:d914:765c, port: 444, uuid: a47dae63-e2ca-11eb-aa7a-0a7cdca84a48, alterId: 0, cipher: auto }
 
 
 proxy-groups:
-- { name: "AutoSelect", type: url-test, proxies: [  'trojannakhla', 'trojan3070',  'trojan3071'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
-- { name: "proxies", type: select, proxies: [ 'trojannakhla', 'trojan3070',  'trojan3071' ] }
-
+- { name: "AutoSelect", type: url-test, proxies: [  't1', 't2', 'tcp1', 'tcp2', 'tcp3'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+- { name: "proxies", type: select, proxies: [ AutoSelect,  't1', 't2', 'tcp1', 'tcp2', 'tcp3' ] }
 
 rules:
  - GEOIP,CN,DIRECT
