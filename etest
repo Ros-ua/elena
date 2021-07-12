@@ -27,4 +27,3 @@ proxy-groups:
 rules:
  - GEOIP,CN,DIRECT
  - MATCH,proxies
-{"mode":"full","isActive":false}
