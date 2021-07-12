@@ -10,8 +10,8 @@ secret: ''
 
 proxies:
 
-- { name: "trojannakhla", type: trojan, server: nakhla.duckdns.org, port: 443, password: 1qaz2wsx }
-- { name: "tcp3", type: vmess, server: 13.212.93.187, port: 444, uuid: f5f0775a-d95d-11eb-b14e-0a08309daed6, alterId: 0, cipher: auto }
+- { name: "t", type: trojan, server: nakhla.duckdns.org, port: 443, password: 1qaz2wsx }
+- { name: "tcp", type: vmess, server: 13.212.93.187, port: 444, uuid: f5f0775a-d95d-11eb-b14e-0a08309daed6, alterId: 0, cipher: auto }
 
 - { name: "t1", type: trojan, server: 1208.number999.design, port: 443, password: 1qaz2wsx }
 - { name: "t2", type: trojan, server: 1208.number999.design, port: 443, password: js6l5rctr }
